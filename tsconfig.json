@@ -3,6 +3,11 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "enquiry-form": [
+        "./dist/enquiry-form"
+      ]
+    },
     "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,

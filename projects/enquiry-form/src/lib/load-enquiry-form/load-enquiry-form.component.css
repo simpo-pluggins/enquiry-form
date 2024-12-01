@@ -1,0 +1,156 @@
+.total_container{
+    position: relative;
+    height: auto;
+}
+.mobile-display{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .heading-large{
+    font-size: calc(36px* var(--head-fontSize, 1));
+    line-height: calc(42px* var(--head-fontHeight, 1));
+    font-weight: 600;
+  }
+  .body-large{
+    font-size: calc(20px* var(--body-fontSize, 1));
+    line-height: calc(30px* var(--body-fontHeight, 1));
+    font-weight: 400;
+  }
+  .body-desc{
+    font-size: calc(16px* var(--body-fontSize, 1));
+    font-weight: 400;
+  }
+  button{
+    font-size: 1.25rem !important;
+    width: 100% !important;
+  }
+  .heading-medium {
+    font-size: calc(30px* var(--head-fontSize, 1));
+    line-height: calc(38px* var(--head-fontHeight, 1));
+    font-weight: 600;
+  }
+  .heading-small{
+    font-size: calc(20px* var(--head-fontSize, 1));
+    line-height: calc(38px* var(--head-fontHeight, 1));
+    font-weight: 500;
+  }
+  .heading-fs-xlarge {
+    font-size: 36px;
+  }
+  .heading-fs-large {
+    font-size: 30px;
+  }
+  .heading-fs-medium {
+    font-size: 24px;
+  }
+  .heading-fs-small {
+    font-size: 20px;
+  }
+
+  .desc-fs-large {
+    font-size: 18px;
+  }
+ .desc-fs-medium {
+    font-size: 16px;
+  }
+ .desc-fs-small {
+    font-size: 14px;
+  }
+
+  @media only screen and (min-width : 768px){
+    .heading-large{
+      font-size: calc(46px* var(--head-fontSize, 1));
+      line-height: calc(54px* var(--head-fontHeight, 1));
+      font-weight: 600;
+    }
+    .heading-medium {
+      font-size: calc(30px* var(--head-fontSize, 1));
+      line-height: calc(38px* var(--head-fontHeight, 1));
+      font-weight: 600;
+    }
+    .heading-fs-xlarge {
+      font-size: 46px;
+    }
+    .heading-fs-large {
+      font-size: 35px;
+    }
+    .heading-fs-medium {
+      font-size: 28px;
+    }
+    .heading-fs-small {
+      font-size: 21px;
+    }
+  }
+
+  @media only screen and (min-width : 1280px){
+    .heading-large{
+      font-size: calc(48px* var(--head-fontSize, 1));
+      line-height: calc(65px* var(--head-fontHeight, 1));
+      font-weight: 400;
+    }
+    .body-large{
+      font-size: calc(16px* var(--body-fontSize, 1));
+      line-height: calc(30px* var(--body-fontHeight, 1));
+    }
+    .heading-medium {
+      font-size: calc(30px* var(--head-fontSize, 1));
+      line-height: calc(38px* var(--head-fontHeight, 1));
+      font-weight: 400;
+    }
+    .body-desc{
+      font-size: calc(18px* var(--body-fontSize, 1));
+      font-weight: 400;
+    }
+    .heading-fs-xlarge {
+      font-size: 72px;
+    }
+    .heading-fs-large {
+      font-size: 48px;
+    }
+    .heading-fs-medium {
+      font-size: 32px;
+    }
+    .heading-fs-small {
+      font-size: 24px;
+    }
+    .desc-fs-large {
+      font-size: 24px;
+    }
+   .desc-fs-medium {
+      font-size: 18px;
+    }
+   .desc-fs-small {
+      font-size: 16px;
+    }
+
+  }
+  .send-btn{
+    font-size: 16px!important;
+    padding: 1rem 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content!important;
+    margin-top: 1rem;
+    /* margin-left: 5%; */
+  }
+  sup{
+    color: red;
+  }
+  .input-class{
+    height: 48px;
+    border-radius: 6px;
+    padding: 10px 14px;
+    border: 1px solid #D0D5DD;
+  }
+  input[type="number"].no-spinner::-webkit-outer-spin-button,
+input[type="number"].no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide the spinner for Firefox */
+input[type="number"].no-spinner {
+  -moz-appearance: textfield;
+}

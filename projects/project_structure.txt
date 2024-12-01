@@ -1,0 +1,20 @@
+projects
+    enquiry-form
+        src
+            lib
+                load-enquiry-form(component)
+                enquiry-form.compnent.spect.ts
+                enquiry-form.compnent.ts
+                enquiry-form.module.ts
+                enquiry-form.service.ts
+            public-api.ts
+        package.json
+    test-project
+        src
+            app
+                app-routing.module.ts
+                app.component.html
+                app.component.scss
+                app.component.spect.ts
+                app.compnent.ts
+                app.module.ts
