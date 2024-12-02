@@ -8,13 +8,15 @@ export class EnquiryFormService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) { 
+    this.fetchCurrentId();
+  }
 
   getWebsiteTemplate(url:any) {
-    const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',  // This allows all domains to access the resource.
-      'Access-Control-Allow-Credentials':'true'
-    });
     return this.http.get(url);  
+  }
+  
+  fetchCurrentId(){
+    console.log('testing')
   }
 }
