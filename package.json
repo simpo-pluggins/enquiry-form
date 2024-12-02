@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:webpack":"npx webpack --config webpack.config.js --mode production"
   },
   "private": true,
   "dependencies": {
@@ -18,8 +19,11 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
+    "babel-loader": "^9.2.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
