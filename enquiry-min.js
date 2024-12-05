@@ -13,8 +13,8 @@ spacingLayout = {
 
 class enquiryMin {
     constructor() {
-        // window.onload = function () {
-        setTimeout(() => {
+        window.onload = function () {
+        // setTimeout(() => {
                 const urlParams = new URLSearchParams(window.location.search);
             let fontFamily = urlParams.get('ff');
             id = urlParams.get('id');
@@ -30,8 +30,8 @@ class enquiryMin {
                 fetchingAPIUrl(id, env)
                 getSuccessTemplateValues(id);
             }
-            }, 200);
-        // }
+            // }, 200);
+        }
     }
 }
 
