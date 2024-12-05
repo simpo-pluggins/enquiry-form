@@ -11,7 +11,7 @@ class getEnquiryForm{
                     accessKey = enquiryId.getAttribute('accesskey');
                     dataId = enquiryId.getAttribute('data-id');
                 }
-                let fontFamily = window.getComputedStyle(enquiryId)['font-family'];
+                let fontFamily = window.getComputedStyle(enquiryId)['font-family'] || null;
                 const id = encodeURIComponent(accessKey.split('=')[0]);
                 const bId = encodeURIComponent(accessKey.split('=')[1]);
                 localStorage.setItem('bId',accessKey.split('=')[1])
