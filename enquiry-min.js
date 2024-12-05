@@ -19,9 +19,9 @@ class enquiryMin {
             let fontFamily = urlParams.get('ff');
             id = urlParams.get('id');
             // bId = urlParams.get('bId');
-            bId = localStorage.getItem('bId');
+            bId = window.localStorage.getItem('bId');
             // env = urlParams.get('denv');
-            env = localStorage.getItem('denv');
+            env = window.localStorage.getItem('denv');
 
             if (fontFamily) {
                 document.body.style.fontFamily = decodeURIComponent(fontFamily);
