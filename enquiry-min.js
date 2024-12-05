@@ -18,8 +18,10 @@ class enquiryMin {
                 const urlParams = new URLSearchParams(window.location.search);
             let fontFamily = urlParams.get('ff');
             id = urlParams.get('id');
-            bId = urlParams.get('bId');
-            env = urlParams.get('denv');
+            // bId = urlParams.get('bId');
+            bId = localStorage.getItem('bId');
+            // env = urlParams.get('denv');
+            env = localStorage.getItem('denv');
 
             if (fontFamily) {
                 document.body.style.fontFamily = decodeURIComponent(fontFamily);
