@@ -2,8 +2,8 @@ var accessKey ;
 
 class getEnquiryForm{
     constructor() {
-        // window.onload = function(){
-        setTimeout(() => {
+        window.onload = function(){
+        // setTimeout(() => {
                 if(document.getElementById('enquiry-form') != null){
                 let enquiryId = document.getElementById('enquiry-form');
                 let dataId;
@@ -23,8 +23,8 @@ class getEnquiryForm{
                 <iframe id="myHtml" src="https://simpo-pluggins.github.io/enquiry-form/index.html?id=${id}&ff=${encodedFontFamily}&denv=${dataId}&bId=${bId}" style="width:100%;height:calc(100vh - 20px);border:none;"></iframe>
                 `
             }
-            }, 200);
-        // }
+            // }, 200);
+        }
     }
 }
 
