@@ -13,6 +13,8 @@ class getEnquiryForm{
                 let fontFamily = window.getComputedStyle(enquiryId)['font-family'];
                 const id = encodeURIComponent(accessKey.split('=')[0]);
                 const bId = encodeURIComponent(accessKey.split('=')[1]);
+                localStorage.setItem('bId',accessKey.split('=')[1])
+                localStorage.setItem('denv',dataId)
                 const url = `https://simpo-pluggins.github.io/enquiry-form/index.html?id=${id}&ff=${fontFamily}&denv=${dataId}&bId=${bId}`;
                 if (!enquiryId) return;
                 enquiryId.innerHTML += `
