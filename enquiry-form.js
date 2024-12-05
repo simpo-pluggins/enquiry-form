@@ -16,7 +16,7 @@ class getEnquiryForm{
                 const url = `https://simpo-pluggins.github.io/enquiry-form/index.html?id=${id}&ff=${fontFamily}&denv=${dataId}&bId=${bId}`;
                 if (!enquiryId) return;
                 enquiryId.innerHTML += `
-                <iframe id="myHtml" src=url style="width:100%;height:calc(100vh - 20px);border:none;"></iframe>
+                <iframe id="myHtml" src="https://simpo-pluggins.github.io/enquiry-form/index.html?id=${id}&ff=${fontFamily}&denv=${dataId}&bId=${bId}" style="width:100%;height:calc(100vh - 20px);border:none;"></iframe>
                 `
             }
         }
