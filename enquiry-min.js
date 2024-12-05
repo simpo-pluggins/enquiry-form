@@ -30,7 +30,7 @@ class enquiryMin {
                 fetchingAPIUrl(id, env)
                 getSuccessTemplateValues(id);
             }
-            }, 100);
+            }, 200);
         // }
     }
 }
