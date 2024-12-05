@@ -11,9 +11,12 @@ class getEnquiryForm{
                     dataId = enquiryId.getAttribute('data-id');
                 }
                 let fontFamily = window.getComputedStyle(enquiryId)['font-family'];
+                const id = encodeURIComponent(accessKey.split('=')[0]);
+                const bId = encodeURIComponent(accessKey.split('=')[1]);
+                const url = `https://simpo-pluggins.github.io/enquiry-form/index.html?id=${id}&ff=${fontFamily}&denv=${dataId}&bId=${bId}`;
                 if (!enquiryId) return;
                 enquiryId.innerHTML += `
-                <iframe id="myHtml" src="https://simpo-pluggins.github.io/enquiry-form/index.html?id=${accessKey.split('=')[0]}&ff=${fontFamily}&denv=${dataId}&bId=${accessKey.split('=')[1]}" style="width:100%;height:calc(100vh - 20px);border:none;"></iframe>
+                <iframe id="myHtml" src=url style="width:100%;height:calc(100vh - 20px);border:none;"></iframe>
                 `
             }
         }
