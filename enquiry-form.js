@@ -11,7 +11,8 @@ class getEnquiryForm{
                     accessKey = enquiryId.getAttribute('accesskey');
                     dataId = enquiryId.getAttribute('data-id');
                 }
-                let fontFamily = window.getComputedStyle(enquiryId)['font-family'] || null;
+                const fontFamily = window.getComputedStyle(enquiryId)['font-family'] || null;
+                const encodedFontFamily = encodeURIComponent(fontFamily);
                 const id = encodeURIComponent(accessKey.split('=')[0]);
                 const bId = encodeURIComponent(accessKey.split('=')[1]);
                 localStorage.setItem('bId',accessKey.split('=')[1])
@@ -19,7 +20,7 @@ class getEnquiryForm{
                 const url = `https://simpo-pluggins.github.io/enquiry-form/index.html?id=${id}&ff=${fontFamily}&denv=${dataId}&bId=${bId}`;
                 if (!enquiryId) return;
                 enquiryId.innerHTML += `
-                <iframe id="myHtml" src="https://simpo-pluggins.github.io/enquiry-form/index.html?id=${id}&ff=${fontFamily}&denv=${dataId}&bId=${bId}" style="width:100%;height:calc(100vh - 20px);border:none;"></iframe>
+                <iframe id="myHtml" src="https://simpo-pluggins.github.io/enquiry-form/index.html?id=${id}&ff=${encodedFontFamily}&denv=${dataId}&bId=${bId}" style="width:100%;height:calc(100vh - 20px);border:none;"></iframe>
                 `
             }
             }, 200);
