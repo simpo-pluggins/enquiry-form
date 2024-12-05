@@ -1,6 +1,5 @@
 var id;
 var bId;
-var getEnquiryFormApiUrl;
 var contactResponseData;
 var env;
 var templates;
@@ -58,16 +57,17 @@ function getSuccessTemplateValues(){
 }
 
 function fetchingAPIUrl(id, env) {
+    let getEnquiryFormApiUrl;
     if (env === 'PRE-PROD') {
         getEnquiryFormApiUrl = `https://dev-api.simpo.ai/business/v3/website/${id}/pages/list`
     }
     else if (env === 'PROD') {
         getEnquiryFormApiUrl = `https://api.simpo.ai/business/v3/website/${id}/pages/list`
     }
-    fetchEnquiryFormData();
+    fetchEnquiryFormData(getEnquiryFormApiUrl);
 }
 
-function fetchEnquiryFormData() {
+function fetchEnquiryFormData(getEnquiryFormApiUrl) {
     fetch(getEnquiryFormApiUrl)
         .then(response => {
             if (!response.ok) {
