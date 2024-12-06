@@ -14,13 +14,10 @@ spacingLayout = {
 class enquiryMin {
     constructor() {
         window.onload = function () {
-        // setTimeout(() => {
-                const urlParams = new URLSearchParams(window.location.search);
+            const urlParams = new URLSearchParams(window.location.search);
             let fontFamily = urlParams.get('ff');
             id = urlParams.get('id');
             bId = urlParams.get('bId');
-            // bId = window.localStorage.getItem('bId');
-            // env = window.localStorage.getItem('denv');
             env = urlParams.get('denv');
 
             if (fontFamily) {
@@ -30,7 +27,6 @@ class enquiryMin {
                 fetchingAPIUrl(id, env)
                 getSuccessTemplateValues(id);
             }
-            // }, 200);
         }
     }
 }
@@ -472,6 +468,167 @@ function clearFormData() {
 function formWithoutImageFn(data, formWithImage, formWithoutImage) {
     formWithImage.style.display = 'none';
     formWithoutImage.style.display = 'block';
+
+    const enquiryFormMini = document.getElementById('enquiry_form_no_image');
+    if (data.styles.positionLayout.value === 'right') {
+        enquiryFormMini.classList.add('flex-lg-row-reverse');
+        Object.assign(enquiryFormMini.style, {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'stretch',
+            height: '100%',
+            position: 'relative'
+        })
+    }
+    else if (data.styles.positionLayout.value === 'left') {
+        enquiryFormMini.classList.add('flex-lg-row');
+        Object.assign(enquiryFormMini.style, {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'stretch',
+            height: '100%',
+            position: 'relative'
+        });
+    }
+
+    //include spacing
+    includeSpacing(data?.styles?.layout?.spacing, enquiryFormMini)
+
+    conteSectionAndFieldsNoImage(data)
+
+}
+
+function conteSectionAndFieldsNoImage(data){
+    const contentPart = document.getElementById('content_section');
+    if (contentPart) {
+        if (data?.styles.positionLayout.value === 'top') {
+            contentPart.classList.add('pt-5')
+        }
+        loadContentTitleDescriptionNoImage(data)
+        loadContentInputFieldsNoImage(data);
+        loadButtonValueNoImage(data);
+    }
+}
+
+function loadContentTitleDescriptionNoImage(data){
+    const loadFormTitleDescription = document.getElementById('load_form_title_description_no_image');
+    if (loadFormTitleDescription) {
+        if (data?.content?.inputText && Array.isArray(data.content.inputText)) {
+            data?.content?.inputText.forEach(item => {
+                const element = document.createElement('div');
+                // element.classList.add('mt-2');
+                if (item.isRTE) {
+                    const rteContent = document.createElement('div');
+                    rteContent.innerHTML = item.value;
+                    element.appendChild(rteContent);
+                    if (item.label.toUpperCase() === 'HEADING') {
+                        rteContent.classList.add('heading-large', 'lh-2', 'mb-3')
+                    }
+                    else {
+                        rteContent.classList.add('body-large', 'lh-2', 'mb-3')
+                    }
+                }
+                else {
+                    const textContent = document.createElement('p');
+                    textContent.textContent = item.value;
+                    element.appendChild(textContent);
+                }
+
+                loadFormTitleDescription.appendChild(element);
+            });
+        }
+    }
+}
+
+function loadContentInputFieldsNoImage(data) {
+    const loadFormContentField = document.getElementById('load_form_input_fields_no_image');
+    if (loadFormContentField) {
+        if (data?.content?.contactField?.fields && Array.isArray(data.content.contactField.fields)) {
+            data?.content?.contactField?.fields.forEach(field => {
+                const fieldContainer = document.createElement('div');
+                fieldContainer.classList.add('mb-3', 'single_input');
+
+                const label = document.createElement('label');
+                label.setAttribute('for', field.label);
+                label.classList.add('form-label');
+                label.textContent = field.label;
+
+                if (field.required) {
+                    const redStar = document.createElement('span');
+                    redStar.textContent = ' *';
+                    redStar.style.color = 'red';
+                    label.appendChild(redStar);
+                }
+
+                // Check the field type
+                if (field.type === 'text' || field.type === 'number') {
+                    const input = document.createElement('input');
+                    input.type = field.type;
+                    input.id = ((field.label).split(' ').join('_')).toLowerCase();
+                    input.name = field.label;
+                    input.placeholder = 'Enter ' + field.label.toLowerCase()
+                    input.classList.add('form-control');
+                    input.required = field.required || false;
+                    input.value = field.sendingValue || '';
+
+                    input.addEventListener('input', (e) => {
+                        field.sendingValue = e.target.value;
+                        // console.log(field);
+                    });
+
+                    fieldContainer.appendChild(label);
+                    fieldContainer.appendChild(input);
+                } else if (field.type === 'dropdown') {
+                    const select = document.createElement('select');
+                    select.id = ((field.label).split(' ').join('_')).toLowerCase();
+                    select.name = field.label;
+                    select.classList.add('form-select');
+                    select.required = field.required || false;
+
+                    const defaultOption = document.createElement('option');
+                    defaultOption.textContent = `Select ${field.label}`;
+                    defaultOption.disabled = true;
+                    defaultOption.selected = true;
+                    select.appendChild(defaultOption);
+
+                    field.options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option.value;
+                        optionElement.textContent = option.label;
+                        select.appendChild(optionElement);
+                    });
+
+                    select.addEventListener('change', (e) => {
+                        field.sendingValue = e.target.value;
+                        // console.log(field);
+                    });
+
+                    fieldContainer.appendChild(label);
+                    fieldContainer.appendChild(select);
+                }
+
+                loadFormContentField.appendChild(fieldContainer);
+            });
+        }
+    }
+}
+
+function loadButtonValueNoImage(data) {
+    const loadsendButton = document.getElementById('sendButtonNoImage');
+    if (loadsendButton) {
+        loadsendButton.innerHTML = data?.content?.contactField?.button;
+        const buttonData = data.action.buttons[0]
+
+        loadsendButton.id = buttonData.id
+        Object.assign(loadsendButton.style, {
+            border: buttonData.styles.type === 'Outline' ? '2px solid #000' : 'none',
+            backgroundColor: buttonData.styles.type === 'Outline' ? 'transparent' : '#000',
+            color: buttonData.styles.type === 'Outline' ? '#000' : '#fff',
+            borderRadius: buttonData.styles.shape === 'Round' ? '5px' : '4px',
+            padding: '10px 20px',
+            cursor: 'pointer'
+        })
+    }
 }
 
 enquiry = new enquiryMin()
